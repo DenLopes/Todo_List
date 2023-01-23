@@ -45,7 +45,9 @@ async function accept() {
 
 async function addSubTask() {
   try {
-    await axios.put("/sub_tasks/all", { subTasks: sub_tasks.value });
+    await axios.put(`sub_tasks/${task.value.id}`, {
+      subTasks: sub_tasks.value,
+    });
   } catch (error) {
     console.error(error);
   }

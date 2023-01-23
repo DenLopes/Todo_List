@@ -31,23 +31,6 @@ class SubTaskController extends Controller
         return redirect()->back()->with('success', 'tasks created successfully!');
     }
 
-    public function create_one(Request $request)
-    {
-        $sub_tasks = $request->input('sub_tasks');
-        $latestTask = Task::latest()->first();
-        $task_id = $latestTask->id;
-        foreach($sub_tasks as $subtask){
-            if(!isset($subtask['id'])) {
-                $task = new subTask;
-                $task->task_name = $subtask['task_name'];
-                $task->state = false;
-                $task->task_id = $task_id;
-                $task->save();
-            }
-        }
-        return redirect()->back()->with('success', 'subtasks created successfully!');
-    }
-    
     public function recents() 
     {
         $subTasks = SubTask::where('state', true)
@@ -78,10 +61,8 @@ class SubTaskController extends Controller
         }
     }
 
-    public function update_sub_tasks(Request $request) {
+    public function update_sub_tasks(Request $request, $id) {
         $subTasks = $request->input('subTasks');
-        $latestTask = Task::latest()->first();
-        $task_id = $latestTask->id;
         foreach ($subTasks as $subTask) {
             if (array_key_exists('id', $subTask)) {
                 $task = SubTask::find($subTask['id']);
@@ -92,7 +73,7 @@ class SubTaskController extends Controller
                 $newTask = new SubTask;
                 $newTask->task_name = $subTask['task_name'];
                 $newTask->state = false;
-                $newTask->task_id = $task_id;
+                $newTask->task_id = $id;
                 $newTask->save();
             }
         }
