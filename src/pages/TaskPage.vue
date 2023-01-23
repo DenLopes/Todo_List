@@ -49,7 +49,7 @@ async function deleteSubTask(id) {
   getSubTask();
 }
 
-async function changeState(id) {
+async function changeState(id, index) {
   try {
     await axios
       .put(`/sub_task/${id}`, {
@@ -61,7 +61,6 @@ async function changeState(id) {
       });
   } catch (err) {
     console.log("err->", err.response.data);
-    return res.status(500).send({ ret_code: ReturnCodes.SOMETHING_WENT_WRONG });
   }
 }
 
@@ -88,7 +87,7 @@ onMounted(() => {
               flat
               round
               icon="edit"
-              @click.prevent="toggleEditTask"
+              @click.prevent="toggleEditTask(), getSubTask()"
               size="20px"
             />
           </div>
