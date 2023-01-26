@@ -13,11 +13,7 @@ defineComponent({
 </script>
 
 <template>
-  <q-item
-    :to="$route.path === `/task/${id}` ? '#' : `/task/${id}`"
-    clickable
-    v-ripple
-  >
+  <q-item :to="`/task/${id}`" clickable v-ripple>
     <q-item-section avatar top>
       <q-avatar icon="article" color="grey" text-color="white" />
     </q-item-section>

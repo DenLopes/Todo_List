@@ -1,6 +1,6 @@
 <script setup>
 import axios from "axios";
-import { ref, onMounted, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
 import DrawerProject from "src/components/DrawerProject.vue";
 
 const leftDrawerOpen = ref(false);
