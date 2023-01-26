@@ -25,7 +25,7 @@ function formatDate(created_at) {
       <span class="q-focus-helper"></span>
       <q-card-section class="bg-primary text-white">
         <div class="flex justify-between">
-          <div class="text-h6" style="line-break: anywhere; max-width: 93%">
+          <div class="text-h6" style="line-break: anywhere; max-width: 80%">
             {{ task.title }}
           </div>
           <div>

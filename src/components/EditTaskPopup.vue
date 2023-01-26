@@ -19,7 +19,7 @@ const sub_tasks = toRef(props, "sub_tasks");
 
 function addTask() {
   console.log(sub_tasks);
-  sub_tasks.value.push({ task_name: "" });
+  sub_tasks.value.unshift({ task_name: "" });
 }
 
 function subTask(n) {
@@ -129,6 +129,7 @@ onMounted(() => {
               <div class="flex">
                 <q-btn
                   flat
+                  rounded
                   color="primary"
                   icon="close"
                   @click="$emit('deleteSubTask', sub_task.id), subTask(index)"

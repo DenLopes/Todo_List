@@ -13,7 +13,7 @@ const task = ref({ title: null, description: null });
 const sub_tasks = ref([null]);
 
 function addTask() {
-  sub_tasks.value.push(null);
+  sub_tasks.value.unshift(null);
 }
 
 function subTask(n) {
@@ -90,7 +90,7 @@ onMounted(() => {});
               autogrow
             />
           </div>
-          <div class="flex column reverse">
+          <div class="flex column">
             <q-item
               class="flex column"
               v-for="(task, index) in sub_tasks"
