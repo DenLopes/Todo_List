@@ -23,9 +23,7 @@ function addTask() {
 }
 
 function subTask(n) {
-  if (sub_tasks.value.length > 1) {
-    sub_tasks.value.splice(n, 1);
-  }
+  sub_tasks.value.splice(n, 1);
 }
 
 function toggleEditTask() {
@@ -41,6 +39,7 @@ async function accept() {
   } catch (error) {
     console.error(error);
   }
+  emit("getTask");
 }
 
 async function addSubTask() {

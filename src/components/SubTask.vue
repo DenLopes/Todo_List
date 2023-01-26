@@ -18,7 +18,7 @@ function invertState() {
   <div>
     <q-slide-item
       @left="onLeft"
-      @right="$emit('delete', sub_task.id)"
+      @right="$emit('delete', sub_task.id), $emit('erase', index)"
       @click.stop="$emit('changeState', sub_task.id), invertState()"
       right-color="red"
       style="

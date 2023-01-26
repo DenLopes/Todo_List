@@ -46,10 +46,13 @@ async function deleteSubTask(id) {
     .catch((error) => {
       console.log(error);
     });
-  getSubTask();
 }
 
-async function changeState(id, index) {
+function minusTask(index) {
+  sub_tasks.value.splice(index, 1);
+}
+
+async function changeState(id) {
   try {
     await axios
       .put(`/sub_task/${id}`, {
@@ -99,9 +102,11 @@ onMounted(() => {
       }}</q-card-section>
       <q-separator />
 
-      <div v-for="sub_task in sub_tasks" :key="sub_task">
+      <div v-for="(sub_task, index) in sub_tasks" :key="sub_task">
         <SubTask
           :sub_task="sub_task"
+          :index="index"
+          @erase="minusTask"
           @delete="deleteSubTask"
           @changeState="changeState"
         ></SubTask>
